@@ -1,3 +1,6 @@
+server:
+  port: 0
+
 spring:
   rabbitmq:
      addresses: localhost:5672
@@ -11,3 +14,12 @@ spring:
        concurrency: 4
        max-concurrency: 8
        prefetch: 162
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: foodOrders
+          group: foodOrdersIntakeGroup
+        test-bind:
+          destination: foodOrders2
+          group: foodOrdersIntakeGroup2
