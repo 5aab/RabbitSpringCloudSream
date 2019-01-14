@@ -16,6 +16,8 @@ spring:
        prefetch: 162
   cloud:
     stream:
+      default:
+        contentType: application/json
       bindings:
         input:
           destination: foodOrders
@@ -23,3 +25,5 @@ spring:
         test-bind:
           destination: foodOrders2
           group: foodOrdersIntakeGroup2
+        foodOrdersChannel:
+          destination: foodOrders
