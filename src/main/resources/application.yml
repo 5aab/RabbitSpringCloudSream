@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8090
 
 spring:
   rabbitmq:
@@ -27,3 +27,25 @@ spring:
           group: foodOrdersIntakeGroup2
         foodOrdersChannel:
           destination: foodOrders
+      rabbit:
+        bindings:
+          foodOrdersChannel:
+            producer:
+              bindingRoutingKey:
+    discovery:
+      enabled: false
+    service-registry:
+      auto-registration:
+        enabled: false
+
+metadata.store.jdbc.table-prefix: rabbit_
+
+spring.h2.console.enabled: true
+spring.h2.console.path: /h2
+
+eureka:
+  client:
+    enabled: false
+
+security:
+  ignored: /**
